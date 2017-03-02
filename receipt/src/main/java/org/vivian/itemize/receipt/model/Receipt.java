@@ -2,40 +2,46 @@ package org.vivian.itemize.receipt.model;
 
 import java.util.Date;
 
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotNull;
+import javax.ws.rs.FormParam;
 import javax.xml.bind.annotation.XmlRootElement;
+import org.glassfish.jersey.server.validation.*;
 
 //@XmlRootElement
 public class Receipt {
 	
+	@NotNull(message = "must not be null.")
+	@FormParam("id")
 	private long id;
+	
+	@NotNull(message = "must not be null.")
+	@FormParam("merchantName")
 	private String merchantName;
 	
-	public Receipt() {}
+	@FormParam("merchantAddr")
+	private String merchantAddr;
 	
-	public Receipt(long id, String merchantName) {
-		this.id = id;
-		this.merchantName = merchantName;
-	}
+	@NotNull
+	@FormParam("expenseCat")
+	private String expenseCat;
 	
-	public long getId() {
-		return id;
-	}
-	public void setId(long id) {
-		this.id = id;
-	}
-	public String getMerchantName() {
-		return merchantName;
-	}
-	public void setMerchantName(String merchantName) {
-		this.merchantName = merchantName;
-	}
-	
-	/*private String merchantAddr;
+	//image
+	@FormParam("subtotal")
 	private double subtotal;
+	@FormParam("tax")
 	private double tax;
-	private double discount; // in percent or number?
+	@FormParam("discount")
+	private double discount;
+	@FormParam("tip")
 	private double tip;
+	
+	@Min(1)
+	@FormParam("grandTotal")
 	private double grandTotal;
+	
+	@NotNull
+	@FormParam("purchaseDate")
 	private Date purchaseDate;
 	
 	public Receipt() {}
@@ -57,7 +63,7 @@ public class Receipt {
 	public long getId() {
 		return id;
 	}
-	public void setId(int id) {
+	public void setId(long id) {
 		this.id = id;
 	}
 	public String getMerchantName() {
@@ -71,6 +77,13 @@ public class Receipt {
 	}
 	public void setMerchantAddr(String merchantAddr) {
 		this.merchantAddr = merchantAddr;
+	}
+	public String getExpenseCat() {
+		return expenseCat;
+	}
+
+	public void setExpenseCat(String expenseCat) {
+		this.expenseCat = expenseCat;
 	}
 	public double getSubtotal() {
 		return subtotal;
@@ -107,5 +120,7 @@ public class Receipt {
 	}
 	public void setPurchaseDate(Date purchaseDate) {
 		this.purchaseDate = purchaseDate;
-	}*/
+	}
+	
+	
 }

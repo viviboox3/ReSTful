@@ -12,6 +12,8 @@ import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
+//import org.json.simple.JSONArray;
+//import org.json.simple.JSONObject;
 import org.vivian.itemize.receipt.model.Receipt;
 import org.vivian.itemize.receipt.service.ReceiptService;
 
@@ -27,11 +29,11 @@ public class ReceiptResource {
 		return receiptService.getAllReceipts(userId);
 	}
 	
-	@POST
-	//@Consumes(MediaType.APPLICATION_JSON)
-	//@Produces(MediaType.APPLICATION_JSON)
+	@POST	// long userId, Receipt receipt
 	public Receipt addReceipt(@PathParam("userId") long userId, Receipt receipt) {
 		
+		//System.out.println(receipt);
+		//return "this";
 		return receiptService.addReceipt(userId, receipt);
 	}
 	
@@ -53,31 +55,5 @@ public class ReceiptResource {
 	public Receipt getReceipt(@PathParam("userId") long userId, @PathParam("receiptId") long receiptId) {
 		return receiptService.getReceipt(userId, receiptId);
 	}
-	/*
-	@GET
-	@Produces(MediaType.APPLICATION_JSON)	// response format
-	public List<Receipt> getReceipts() {
-		
-		return receiptService.getAllReceipts();
-	}
-	*/
-	/*
-	@POST
-	@Consumes(MediaType.APPLICATION_JSON)
-	@Produces(MediaType.APPLICATION_JSON)
-	public Receipt addReceipt(Receipt receipt) {
-		
-		return receiptService.addReceipt(receipt);
-	}
-	*/
-	/*
-	@GET
-	@Path("{receiptId}")
-	@Produces(MediaType.TEXT_PLAIN)
-	public String getReceipt(@PathParam("receiptId") String receiptId) {
-		return "it works22 " + receiptId;
-		//return receiptService.getReceipt(id);
-	}
-	*/
-	
+
 }
