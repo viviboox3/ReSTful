@@ -17,7 +17,7 @@ messing with ReST in building a receipt management API
     }
     
 ### Sample URL call
-To access all user information `http://localhost:8080/receipt/webapi/users`\n
-To access single user information `http://localhost:8080/receipt/webapi/users/{userId}`\n
-POST receipt `http://localhost:8080/receipt/webapi/users/1/receipts`\n
-DELETE/PUT/GET receipt `http://localhost:8080/receipt/webapi/users/1/receipts/{receiptId}`\n
+To access all user information `http://localhost:8080/receipt/webapi/users`<br />
+To access single user information `http://localhost:8080/receipt/webapi/users/{userId}`<br />
+POST receipt `http://localhost:8080/receipt/webapi/users/1/receipts`<br />
+DELETE/PUT/GET receipt `http://localhost:8080/receipt/webapi/users/1/receipts/{receiptId}`<br />
