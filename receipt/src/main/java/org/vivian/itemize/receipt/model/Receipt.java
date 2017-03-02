@@ -1,7 +1,5 @@
 package org.vivian.itemize.receipt.model;
 
-import java.util.Date;
-
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 import javax.ws.rs.FormParam;
@@ -11,11 +9,11 @@ import org.glassfish.jersey.server.validation.*;
 //@XmlRootElement
 public class Receipt {
 	
-	@NotNull(message = "must not be null.")
+	@Min(1)
 	@FormParam("id")
 	private long id;
 	
-	@NotNull(message = "must not be null.")
+	@NotNull		// validator to make sure this is a required field
 	@FormParam("merchantName")
 	private String merchantName;
 	
@@ -26,7 +24,7 @@ public class Receipt {
 	@FormParam("expenseCat")
 	private String expenseCat;
 	
-	//image
+
 	@FormParam("subtotal")
 	private double subtotal;
 	@FormParam("tax")
@@ -42,12 +40,15 @@ public class Receipt {
 	
 	@NotNull
 	@FormParam("purchaseDate")
-	private Date purchaseDate;
+	private String purchaseDate;
+	@NotNull
+	@FormParam("image")
+	private String image;
 	
 	public Receipt() {}
 	
 	public Receipt(int id, String merchantName, String merchantAddr, double subtotal, double tax, double discount,
-			double tip, double grandTotal, Date purchaseDate) {
+			double tip, double grandTotal, String purchaseDate) {
 		
 		this.id = id;
 		this.merchantName = merchantName;
@@ -60,6 +61,14 @@ public class Receipt {
 		this.purchaseDate = purchaseDate;
 	}
 	
+	public String getImage() {
+		return image;
+	}
+
+	public void setImage(String image) {
+		this.image = image;
+	}
+
 	public long getId() {
 		return id;
 	}
@@ -115,10 +124,10 @@ public class Receipt {
 	public void setGrandTotal(double grandTotal) {
 		this.grandTotal = grandTotal;
 	}
-	public Date getPurchaseDate() {
+	public String getPurchaseDate() {
 		return purchaseDate;
 	}
-	public void setPurchaseDate(Date purchaseDate) {
+	public void setPurchaseDate(String purchaseDate) {
 		this.purchaseDate = purchaseDate;
 	}
 	

@@ -3,13 +3,17 @@ package org.vivian.itemize.receipt.model;
 import java.util.HashMap;
 import java.util.Map;
 
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotNull;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
 
 @XmlRootElement		// jaxb
 public class User {
-
+	
+	@Min(1)	// id must be at least 1, since it starts at one
 	private long id;
+	@NotNull
 	private String firstName;
 	private String lastName;
 	private String addr;

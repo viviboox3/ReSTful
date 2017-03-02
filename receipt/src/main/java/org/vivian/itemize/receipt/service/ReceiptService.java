@@ -27,7 +27,7 @@ public class ReceiptService {
 	
 	public Receipt addReceipt(long userId, Receipt receipt) {
 		Map<Long, Receipt> receipts = users.get(userId).getReceipts();
-		receipt.setId(receipts.size() + 1);
+		receipt.setId(receipts.size() + 1);			// increment id number
 		receipts.put(receipt.getId(), receipt);
 		
 		return receipt;
